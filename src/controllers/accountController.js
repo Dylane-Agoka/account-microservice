@@ -9,7 +9,7 @@ const getAccountById = async (request, response) => {
   }
 };
 
-const getAllAccounts = async (request, response) => {
+const getAccounts = async (request, response) => {
   const result = await accountService.getAllAccounts();
   response.status(200).json({success: true, account: result.map(acc => mapToResponse(acc))});
 }
@@ -30,7 +30,7 @@ const deleteAccountById = async (request, response) =>  {
 }
 
 const updateAccountById = async (request, response) => {
-  const result = await accountService.updateAccountById(req.params.id, request.body);
+  const result = await accountService.updateAccountById(request.params.id, request.body);
   if (result.error) {
     switch (result.code) {
       case accountService.errorCodes.NO_VALID_DATA_TO_UPDATE:
@@ -68,7 +68,7 @@ function mapToResponse(account) {
 
 module.exports = {
   getAccountById,
-  getAllAccounts,
+  getAccounts,
   createAccount,
   deleteAccountById,
   updateAccountById,
