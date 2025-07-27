@@ -56,7 +56,7 @@ async function updateAccountById(id, {name, number, type, status}) {
     const allowedStatuses = availableAccountStatusesForUpdate[account.status];
     if (!allowedStatuses.includes(status)) {
       return {
-        error: `cannot update status form '${account.status}' to '${status}'`,
+        error: `cannot update status from '${account.status}' to '${status}'`,
         code: INVALID_STATE_TRANSITION,
       };
     }
@@ -66,7 +66,7 @@ async function updateAccountById(id, {name, number, type, status}) {
     const allowedTypes = availableAccountTypesForUpdate[account.type];
     if (!allowedTypes.includes(type)) {
       return {
-        error: `cannot update type form '${account.type}' to '${type}'`,
+        error: `cannot update type from '${account.type}' to '${type}'`,
         code: INVALID_TYPE_TRANSITION,
       };
     }
