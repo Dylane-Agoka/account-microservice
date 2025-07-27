@@ -37,7 +37,7 @@ const INVALID_STATE_TRANSITION = 4;
 const INVALID_TYPE_TRANSITION = 5;
 
 async function updateAccountById(id, {name, number, type, status}) {
-  if (!name && !number && !type && !status) {
+  if (!name || !number || !type || !status) {
     return { error : 'provide at least one valid data to be updated', code: NO_VALID_DATA_TO_UPDATE};
   }
   if (status && !(status in availableAccountStatusesForUpdate)) {

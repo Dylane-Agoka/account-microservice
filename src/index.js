@@ -9,7 +9,7 @@ async function execute() {
 
   await db.connect(appConfig);
   const server = app.listen(appConfig.port, () => {
-    console.log('account service started', {port: appConfig.port});
+    console.log('account service started at ', {port: appConfig.port});
   });
 
   const closeServer = () => {
